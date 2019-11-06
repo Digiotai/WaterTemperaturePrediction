@@ -14,13 +14,22 @@ def predict():
     '''
     For rendering results on HTML GUI
     '''
-    int_features = [int(x) for x in request.form.values()]
-    final_features = [np.array(int_features)]
-    prediction = model.predict(final_features)
+    data =request.form['msg']
+    data=float(data)
+    #int_features = (float(x) for x in request.form.values())
+    final_features = np.array(data)
+    poly = PolynomialFeatures(degree = 5)
+    prediction = poly.fit_transform(final_features.reshape(-1,1))
 
-    output = round(prediction[0], 2)
+    prediction = model.predict(prediction)
+    
+    
 
-    return render_template('index.html', prediction_text='Water Temperature should be degrees {}'.format(output))
+    #output = round(prediction[0], 2)
+
+    return render_template('index.html', prediction_text='Water Temperature should be degrees {}'.format(prediction))
+
+
 
 
 if __name__ == "__main__":
