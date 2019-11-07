@@ -1,34 +1,70 @@
-<!DOCTYPE html>
-<html >
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>DIGI-LABS</title>
-  
-  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<title>DIGIOTAI</title>
+<!-- stylesheets -->
+<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/yeti/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="{{ url_for('static', filename='main.css') }}" rel="stylesheet">
 <style>
-	. center {
-		display: block; 
-		margin-top: 10px;
+.headr1 {}
+.headr11{display:inline-block; width:30%; align:center;}
+.headr12{display:inline-block;width:69%;}
+a:hover {color:red;text-decoration:underline;}
+a{text-decoration:none;color:white;}
+    .row{background-image: url({{ url_for('static', filename='background.png')}});
+         background-repeat: no-repeat;
+        background-size: cover;
+		background-position: center;
+		  height: 100%; 
+}
 		
+	.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 8px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+}
+    .logo{
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+	
+	.col-md-7{
+	
+	position: absolute;
+	color: white;
+	top: 40%;
+	left: 50%;
+	margin: -50px 0 0 -500px;
+	width:400px;
+	height:400px;
 	}
-
-	</style>
+	
+</style>
 </head>
-
 <body>
-	<a href="https://www.Digiotai.com" target="_blank"> <IMG src="{{ url_for('static', filename='css/Dx-TAL logo.png') }}"  class="center" ALT="www.digiotai.com" width="250" height="120"></a>
+<div class="headr1">
+<div class="headr11" >
 
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img class="logo" src="{{ url_for('static', filename='logo.png') }}" alt="Related Book" width="100" height="50"/>
 
-	 <div class="login">
-	<h1>Water Temperature Prediction Based on its Salnty</h1>
+</div>
+<div  class="headr12">
+<a href="DXTAL" style="text-align: left; text-decoration:none; font-size:35px; " title="DXTAL"> <font color="#ffffff">Prediction of Water Temperature in the Ocean</font></a>
+</br>
+</div>
+</div>
 
-     <!-- Main Input For Receiving Query to our ML -->
+<div class="row">
+ 
+  <div class="col-md-7">
+      
+	  <!-- Main Input For Receiving Query to our ML -->
     <form action="{{ url_for('predict')}}"method="post">
-    	<input type="text" name="msg" placeholder="Salnty" required="required" />
+    	<input type="text" name="msg" placeholder="Water Salinity" required="required" />
         
         <button type="submit" class="btn btn-primary btn-block btn-large">Water Temperature Prediction</button>
     </form>
@@ -36,9 +72,11 @@
    <br>
    <br>
    {{ prediction_text }}
-
- </div>
-
-
+	 </div> 
+  </div>
+ 
+</div>
 </body>
+
 </html>
+ 
